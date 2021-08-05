@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'fsa-meal-tracker';
+  options = ['One', 'Two', 'Three'];
 }
