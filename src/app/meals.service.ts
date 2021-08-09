@@ -29,4 +29,9 @@ export class MealsService {
 		return this.http.delete<MealRaw[]>(`/api/meals/${id}`)
 			.pipe(map(rawMeals => rawMeals.map(rawMeal => this.formatMealDate(rawMeal))));
 	}
+
+	addMeal(date: string, recipeId: string): Observable<Meal[]> {
+		return this.http.post<MealRaw[]>('/api/meals', { date, recipeId })
+			.pipe(map(rawMeals => rawMeals.map(rawMeal => this.formatMealDate(rawMeal))));
+	}
 }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { IngredientsService } from '../ingredients.service';
+import { RecipesService } from '../recipes.service';
+import { Ingredient, Recipe } from '../types';
 
 @Component({
   selector: 'app-recipe-search-page',
@@ -6,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recipe-search-page.component.css']
 })
 export class RecipeSearchPageComponent implements OnInit {
+	searchInputValue: string = '';
+	ingredients: Ingredient[] = [];
+	searchResults: Recipe[] = [];
 
-  constructor() { }
+	constructor(
+		private ingredientsService: IngredientsService,
+		private recipesService: RecipesService,
+	) { }
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+		this.ingredientsService.getIngredients()
+			.subscribe(ingredients => this.ingredients = ingredients);
+	}
 
+	onSearchClicked() {
+		this.recipesService.getSearchResults(this.searchInputValue)
+			.subscribe(searchResults => this.searchResults = searchResults);
+	}
 }
