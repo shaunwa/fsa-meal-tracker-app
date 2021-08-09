@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BackButtonComponent } from './back-button/back-button.component';
-import { DropDownComponent } from './drop-down/drop-down.component';
 import { SmallXComponent } from './small-x/small-x.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { AddIngredientPageComponent } from './add-ingredient-page/add-ingredient-page.component';
@@ -19,7 +19,6 @@ import { RecipeSearchResultsListComponent } from './recipe-search-results-list/r
   declarations: [
     AppComponent,
     BackButtonComponent,
-    DropDownComponent,
     SmallXComponent,
     HomePageComponent,
     AddIngredientPageComponent,
@@ -33,6 +32,7 @@ import { RecipeSearchResultsListComponent } from './recipe-search-results-list/r
     BrowserModule,
     AppRoutingModule,
 	HttpClientModule,
+	FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

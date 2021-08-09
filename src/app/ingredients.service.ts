@@ -19,4 +19,9 @@ export class IngredientsService {
 	deleteIngredient(name: string): Observable<Ingredient[]> {
 		return this.http.delete<Ingredient[]>(`/api/ingredients/${name}`);
 	}
+
+	addIngredient(name: string, amount: number, units: string): Observable<Ingredient[]> {
+		const newIngredient = { name: name.toLowerCase(), amount, units };
+		return this.http.post<Ingredient[]>(`/api/ingredients`, { ...newIngredient });
+	}
 }
