@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list-page',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./shopping-list-page.component.css']
 })
 export class ShoppingListPageComponent implements OnInit {
+	isLoading = true;
+	shoppingListItems: string[] = [];
 
-  constructor() { }
+	constructor(
+		private shoppingListService: ShoppingListService,
+	) { }
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+		this.shoppingListService.getShoppingListItems()
+			.subscribe(items => {
+				this.shoppingListItems = items;
+				this.isLoading = false;
+			})
+	}
 
 }
